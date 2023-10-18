@@ -1,5 +1,8 @@
-.PHONY: help
+.PHONY: help aws-init aws-plan aws-apply localstack-init localstack-plan localstack-apply
 .DEFAULT_GOAL := help
+
+TERRAFORM_FLAGS := -var-file=aws.tfvars
+LOCALSTACK_FLAGS := -var-file=localstack.tfvars
 
 help:
 	@grep -E '^[1-9a-zA-Z_-]+:.*?## .*$$|(^#--)' $(MAKEFILE_LIST) \
@@ -7,20 +10,16 @@ help:
 	| sed -e 's/\[32m #-- /[33m/'
 
 #-- AWS:
-.PHONY: aws-init
 aws-init:					## AWS: terraform init
-	terraform init -var-file=aws.tfvars
+	terraform init $(TERRAFORM_FLAGS)
 
-.PHONY: aws-plan
 aws-plan:					## AWS: terraform plan
-	terraform plan -var-file=aws.tfvars
+	terraform plan $(TERRAFORM_FLAGS)
 
-.PHONY: aws-apply
-aws-apply:					## LocalStack: terraform apply
-	terraform apply -var-file=aws.tfvars
+aws-apply:					## AWS: terraform apply
+	terraform apply $(TERRAFORM_FLAGS)
 
 #-- LocalStack:
-.PHONY: localstack-init
 localstack-init:			## LocalStack: terraform init
 	terraform init \
 		-backend-config="region=us-east-1" \
@@ -31,10 +30,8 @@ localstack-init:			## LocalStack: terraform init
 		-backend-config="access_key=test" \
 		-backend-config="secret_key=test"
 
-.PHONY: localstack-plan
 localstack-plan:			## LocalStack: terraform plan
-	terraform plan -var-file=localstack.tfvars
+	terraform plan $(LOCALSTACK_FLAGS)
 
-.PHONY: localstack-apply
 localstack-apply:			## LocalStack: terraform apply
-	terraform apply -var-file=localstack.tfvars
+	terraform apply $(LOCALSTACK_FLAGS) -auto-approve
