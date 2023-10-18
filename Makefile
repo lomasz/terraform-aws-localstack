@@ -1,6 +1,3 @@
-.PHONY: help aws-init aws-plan aws-apply localstack-init localstack-plan localstack-apply
-.DEFAULT_GOAL := help
-
 TERRAFORM_FLAGS := -var-file=aws.tfvars
 LOCALSTACK_FLAGS := -var-file=localstack.tfvars
 
