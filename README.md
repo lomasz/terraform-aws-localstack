@@ -4,11 +4,16 @@ Good evening, everybody, and welcome to the `terraform-aws-localstack` repositor
 than IKEA assembly instructions and the errors are treated like decorations. That's right, the infrastructure is like
 socks in a dryer - it just disappears for no reason!
 
+## Requirements
+* `python` (Python 3.8 up to 3.11 supported)
+* `pip` (Python package manager)
+* Docker
+* [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
+* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html")
+
 ## Getting Started
 
-Enter the `make` command in the terminal to see all defined targets.
-
-### LocalStack
+### :house: LocalStack
 
 * Install LocalStack AWS CLI (`awslocal`) and `tflocal`
 
@@ -16,16 +21,29 @@ Enter the `make` command in the terminal to see all defined targets.
 pip install awscli-local terraform-local
 ```
 
-* Run LocalStack
+* Run LocalStack:
 
-```bash
-docker-compose up
-```
+  * :free: Community:
+
+    ```bash
+    docker-compose -f localstack-compose.yml up 
+    ```
+
+  * :money_with_wings: Pro:
+  
+    required, for example, for the EKS component. more info: [LocalStack Coverage](https://docs.localstack.cloud/references/coverage/)
+
+    :warning: You need to edit `.env` file and provide `LOCALSTACK_API_KEY` value.
+
+    ```bash
+    source .env
+    docker-compose -f localstack-pro-compose.yml up 
+    ```
 
 * Initialize Terraform:
 
 ```bash
-tflocal init
+tflocal init -migrate-state
 ```
 
 * Generate Terraform plan:
@@ -40,14 +58,12 @@ tflocal plan
 tflocal apply -auto-approve
 ```
 
-### AWS
-
-* Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html") (`aws`)
+### :cloud: AWS
 
 * Create S3 state bucket
 
 ```bash
-aws s3api create-bucket --bucket my-terraform-state-bucket --region us-east-1
+aws s3api create-bucket --bucket my-terraform-state-bucket
 ```
 
 * Initialize Terraform:
@@ -67,6 +83,3 @@ terraform plan
 ```bash
 terraform apply -auto-approve
 ```
-
-
-
