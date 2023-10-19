@@ -10,10 +10,10 @@ Enter the `make` command in the terminal to see all defined targets.
 
 ### LocalStack
 
-* Install LocalStack AWS CLI (`awslocal`)
+* Install LocalStack AWS CLI (`awslocal`) and `tflocal`
 
 ```bash
-pip install awscli-local
+pip install awscli-local terraform-local
 ```
 
 * Run LocalStack
@@ -22,28 +22,22 @@ pip install awscli-local
 docker-compose up
 ```
 
-* Create S3 state bucket
-
-```bash
-awslocal s3api create-bucket --bucket my-terraform-state-bucket --region us-east-1
-```
-
 * Initialize Terraform:
 
 ```bash
-make localstack-init
+tflocal init
 ```
 
 * Generate Terraform plan:
 
 ```bash
-make localstack-plan
+tflocal plan
 ```
 
 * Apply Terraform configuration:
 
 ```bash
-make localstack-apply
+tflocal apply -auto-approve
 ```
 
 ### AWS
@@ -59,19 +53,19 @@ aws s3api create-bucket --bucket my-terraform-state-bucket --region us-east-1
 * Initialize Terraform:
 
 ```bash
-make aws-init
+terraform init
 ```
 
 * Generate Terraform plan:
 
 ```bash
-make aws-plan
+terraform plan
 ```
 
 * Apply Terraform configuration:
 
 ```bash
-make aws-apply
+terraform apply -auto-approve
 ```
 
 
