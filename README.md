@@ -33,10 +33,10 @@ pip install awscli-local terraform-local
   
     required, for example, for the EKS component. more info: [LocalStack Coverage](https://docs.localstack.cloud/references/coverage/)
 
-    :warning: You need to edit `.env` file and provide `LOCALSTACK_API_KEY` value.
+    :warning: You need to provide `LOCALSTACK_API_KEY` value.
 
     ```bash
-    source .env
+    export LOCALSTACK_API_KEY=<your-api-key>
     docker-compose -f localstack-pro-compose.yml up 
     ```
 
