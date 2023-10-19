@@ -4,6 +4,8 @@ Good evening, everybody, and welcome to the `terraform-aws-localstack` repositor
 than IKEA assembly instructions and the errors are treated like decorations. That's right, the infrastructure is like
 socks in a dryer - it just disappears for no reason!
 
+Terraform + AWS / LocalStack + Helm
+
 ## Requirements
 * `python` (Python 3.8 up to 3.11 supported)
 * `pip` (Python package manager)
@@ -43,7 +45,7 @@ pip install awscli-local terraform-local
 * Initialize Terraform:
 
 ```bash
-tflocal init -migrate-state
+tflocal init
 ```
 
 * Generate Terraform plan:
@@ -83,3 +85,37 @@ terraform plan
 ```bash
 terraform apply -auto-approve
 ```
+
+## Connecting to EKS on LocalStack using `kubectl`
+1. Update Kubeconfig for EKS Cluster:
+
+First, you need to add the `my-eks` cluster information to your `~/.kube/config` to enable `kubectl` to know where your cluster is and how to access it.
+
+```bash
+awslocal eks update-kubeconfig --name my-eks
+```
+
+2. Configure AWS CLI for LocalStack:
+
+Before interacting with LocalStack, configure the AWS CLI to use dummy credentials. Though LocalStack doesn't validate these credentials, it expects them to be set.
+
+Run the configuration command:
+
+```bash
+aws configure
+```
+
+When the AWS CLI prompts you for the credentials, use the following:
+
+```bash
+AWS Access Key ID [None]: test
+AWS Secret Access Key [None]: test
+```
+
+3. Now that you've configured kubectl to communicate with your EKS cluster on LocalStack, you can verify the connection by retrieving the cluster nodes or the available services.
+
+```bash
+kubectl get nodes
+```
+
+If everything is set up correctly, these commands should return information about your EKS cluster nodes or services, respectively. If you encounter any errors, make sure to double-check the previous steps.

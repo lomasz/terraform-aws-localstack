@@ -17,6 +17,12 @@ module "eks" {
   subnet_ids      = module.vpc.private_subnets
 }
 
+module "my_helm_release" {
+  source = "./modules/helm"
+
+  depends_on = [module.eks.cluster_name]
+}
+
 output "vpc_id" {
   description = "VPC ID"
   value       = module.vpc.vpc_id
