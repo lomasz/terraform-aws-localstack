@@ -39,7 +39,7 @@ variable "enable_irsa" {
 variable "eks_managed_node_group_defaults" {
   description = "Default configuration for EKS managed node groups"
   type        = map(any)
-  default     = {
+  default = {
     disk_size = 50
   }
 }

@@ -13,6 +13,7 @@ provider "aws" {
   skip_metadata_api_check     = var.use_localstack
   skip_credentials_validation = var.use_localstack
   skip_requesting_account_id  = var.use_localstack
+  s3_use_path_style           = var.use_localstack
 
   endpoints {
     s3  = local.endpoint
@@ -30,5 +31,16 @@ terraform {
     skip_credentials_validation = var.use_localstack
     skip_metadata_api_check     = var.use_localstack
     force_path_style            = var.use_localstack
+  }
+}
+
+terraform {
+  required_version = "= 1.5.7"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
   }
 }
