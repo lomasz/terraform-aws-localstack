@@ -11,7 +11,7 @@ Terraform + AWS / LocalStack + Helm
 * `pip` (Python package manager)
 * Docker
 * [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
-* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html")
+* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
 ## Getting Started
 
@@ -112,10 +112,8 @@ AWS Access Key ID [None]: test
 AWS Secret Access Key [None]: test
 ```
 
-3. Now that you've configured kubectl to communicate with your EKS cluster on LocalStack, you can verify the connection by retrieving the cluster nodes or the available services.
+3. Now that you've configured `kubectl` to communicate with your EKS cluster on LocalStack, you can verify the connection by retrieving the cluster nodes or the available services.
 
 ```bash
 kubectl get nodes
 ```
-
-If everything is set up correctly, these commands should return information about your EKS cluster nodes or services, respectively. If you encounter any errors, make sure to double-check the previous steps.
