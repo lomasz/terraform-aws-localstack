@@ -37,6 +37,10 @@ terraform.rc
 *.backup
 *.bak
 
+# Helm
+charts/
+.lock
+
 # OS
 *.DS_Store
 Thumbs.db

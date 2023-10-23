@@ -12,15 +12,9 @@ module "eks" {
   source = "./modules/eks"
 
   cluster_name    = "my-eks"
-  cluster_version = "1.23"
+  cluster_version = "1.28"
   vpc_id          = module.vpc.vpc_id
   subnet_ids      = module.vpc.private_subnets
-}
-
-module "my_helm_release" {
-  source = "./modules/helm"
-
-  depends_on = [module.eks.cluster_name]
 }
 
 output "vpc_id" {

@@ -6,14 +6,15 @@ socks in a dryer - it just disappears for no reason!
 
 Terraform + AWS / LocalStack + Helm
 
-## Requirements
+## :memo: Requirements
 * `python` (Python 3.8 up to 3.11 supported)
 * `pip` (Python package manager)
 * Docker
+* [Helm](https://helm.sh/docs/intro/install/)
 * [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
-## Getting Started
+## :rocket: Getting Started
 
 ### :house: LocalStack
 
@@ -84,6 +85,12 @@ terraform plan
 
 ```bash
 terraform apply -auto-approve
+```
+
+### :package: Helm
+
+```bash
+helm install my-nginx ./helm/my-nginx-chart
 ```
 
 ## Connecting to EKS on LocalStack using `kubectl`
