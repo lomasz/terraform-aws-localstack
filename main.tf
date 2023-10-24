@@ -17,19 +17,17 @@ module "eks" {
   subnet_ids      = module.vpc.private_subnets
 }
 
-module "rds" {
-  source = "./modules/rds"
+module "db" {
+  source = "./modules/db"
 
-  cluster_name               = var.db_cluster_name
-  engine_version             = "11.9"
-  subnets                    = module.vpc.public_subnets
-  security_groups            = [module.vpc.security_group]
-  instance_type              = "db.r4.large"
-  username                   = var.db_username
-  password                   = var.db_password
-  auto_minor_version_upgrade = true
-  apply_immediately          = true
-  skip_final_snapshot        = true
+  cluster_identifier  = var.db_cluster_name
+  engine              = "aurora-postgresql"
+  engine_version      = "11.9"
+  db_name             = var.db_cluster_name
+  master_username     = var.db_username
+  master_password     = var.db_password
+  instance_identifier = var.db_instance_name
+  instance_class      = "db.r4.large"
 }
 
 output "vpc_id" {
@@ -40,9 +38,4 @@ output "vpc_id" {
 output "eks_cluster_arn" {
   description = "EKS Cluster ARN"
   value       = module.eks.cluster_arn
-}
-
-output "rds_endpoint" {
-  description = "RDS cluster endpoint"
-  value       = module.rds.cluster_endpoint
 }

@@ -6,7 +6,7 @@ socks in a dryer - it just disappears for no reason!
 
 Terraform + AWS / LocalStack + Helm
 
-## :memo: Requirements
+## :memo: Prerequisites
 * `python` (Python 3.8 up to 3.11 supported)
 * `pip` (Python package manager)
 * Docker

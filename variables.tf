@@ -39,6 +39,11 @@ variable "db_cluster_name" {
   type        = string
 }
 
+variable "db_instance_name" {
+  description = "Name of DB Instance"
+  type        = string
+}
+
 variable "db_username" {
   description = "Username for the database"
   type        = string
