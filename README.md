@@ -30,7 +30,7 @@ pip install awscli-local terraform-local
     * :free: Community:
 
       ```bash
-      docker-compose -f localstack-compose.yml up 
+      docker-compose -f localstack-compose.yml up
       ```
 
     * :money_with_wings: Pro:
@@ -43,7 +43,7 @@ pip install awscli-local terraform-local
       ```bash
       # Set up the API Key
       export LOCALSTACK_API_KEY=<your-api-key>
-      
+
       # Run LocalStack Pro
       docker-compose -f localstack-pro-compose.yml up
       ```
