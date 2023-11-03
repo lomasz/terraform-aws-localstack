@@ -15,7 +15,7 @@ resource "aws_rds_cluster" "postgresql" {
 }
 
 resource "aws_secretsmanager_secret" "db_secret" {
-  name = "db_connection_info"
+  name = "db-connection-info"
 }
 
 resource "aws_secretsmanager_secret_version" "db_secret_version" {
