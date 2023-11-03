@@ -1,7 +1,3 @@
-output "cluster_endpoint" {
-  value = aws_rds_cluster.postgresql.endpoint
-}
-
-output "instance_endpoint" {
-  value = aws_rds_cluster_instance.postgresql.endpoint
+output "db_secret_arn" {
+  value = aws_secretsmanager_secret.db_secret.arn
 }

@@ -39,3 +39,8 @@ output "eks_cluster_arn" {
   description = "EKS Cluster ARN"
   value       = module.eks.cluster_arn
 }
+
+output "db_connnection_info_secret_arn" {
+  description = "DB connection info secret ARN"
+  value       = module.db.db_secret_arn
+}
