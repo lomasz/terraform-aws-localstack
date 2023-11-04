@@ -14,6 +14,7 @@ Terraform + AWS / LocalStack + Helm
 * [Helm](https://helm.sh/docs/intro/install/)
 * [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+* [pre-commit](https://github.com/pre-commit/pre-commit-hooks) - required only for staging changes to the repository
 
 ## :rocket: Getting Started
 
