@@ -5,5 +5,8 @@ image:
   tag: "latest"
   pullPolicy: IfNotPresent
 
+app:
+  label: nginx
+
 service:
   port: 80
