@@ -25,6 +25,13 @@ variable "public_subnets" {
   type        = list(string)
 }
 
+# ECR
+
+variable "ecr_names" {
+  description = "List of ECR names"
+  type        = list(string)
+}
+
 # EKS
 
 variable "eks_cluster_name" {

@@ -22,3 +22,8 @@ output "cluster_certificate_authority_data" {
   description = "EKS base64 encoded certificate data required to communicate with the cluster"
   value       = module.eks.cluster_certificate_authority_data
 }
+
+output "cluster_iam_role_arn" {
+  description = "ARN of the IAM role used by the EKS cluster"
+  value       = module.eks.cluster_iam_role_arn
+}

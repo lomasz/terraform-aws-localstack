@@ -4,7 +4,7 @@ Good evening, everybody, and welcome to the `terraform-aws-localstack` repositor
 than IKEA assembly instructions and the errors are treated like decorations. That's right, the infrastructure is like
 socks in a dryer - it just disappears for no reason!
 
-Terraform + AWS / LocalStack + Helm
+Terraform + AWS / LocalStack
 
 ## :memo: Prerequisites
 
@@ -95,11 +95,7 @@ terraform apply -auto-approve
 
 ### :package: Helm
 
-Deply using Helm:
-
-```bash
-helm install my-nginx ./helm/my-nginx-chart
-```
+Use my another git repository [spring-boot-template](https://github.com/lomasz/spring-boot-template) as example of Helm chart.
 
 ## Connecting to EKS on LocalStack using `kubectl`
 
@@ -130,7 +126,13 @@ AWS Access Key ID [None]: test
 AWS Secret Access Key [None]: test
 ```
 
-**3. Validate kubectl Configuration**
+**3. Set current k8s context**
+
+```
+kubectx arn:aws:eks:us-east-1:000000000000:cluster/my-eks
+```
+
+**4. Validate kubectl Configuration**
 
 List resources across all namespaces to validate the connection:
 

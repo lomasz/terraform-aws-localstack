@@ -17,6 +17,12 @@ module "eks" {
   subnet_ids      = module.vpc.private_subnets
 }
 
+module "ecr" {
+  source                    = "./modules/ecr"
+  ecr_names                 = var.ecr_names
+  eks_cluster_iam_role_arns = [module.eks.cluster_iam_role_arn]
+}
+
 module "db" {
   source = "./modules/db"
 
@@ -38,6 +44,11 @@ output "vpc_id" {
 output "eks_cluster_arn" {
   description = "EKS Cluster ARN"
   value       = module.eks.cluster_arn
+}
+
+output "ecr_repository_urls" {
+  description = "EThe URL of the ECR repositories"
+  value       = module.ecr.ecr_repository_urls
 }
 
 output "db_connnection_info_secret_arn" {
