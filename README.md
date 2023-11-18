@@ -93,7 +93,7 @@ terraform plan
 terraform apply -auto-approve
 ```
 
-### :package: Helm
+### :wheel_of_dharma: Helm
 
 Use my another git repository [spring-boot-template](https://github.com/lomasz/spring-boot-template) as example of Helm chart.
 
