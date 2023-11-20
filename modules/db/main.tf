@@ -9,6 +9,7 @@ resource "aws_rds_cluster_instance" "postgresql" {
 resource "aws_rds_cluster" "postgresql" {
   cluster_identifier = var.cluster_identifier
   engine             = var.engine
+  engine_version     = var.engine_version
   database_name      = var.db_name
   master_username    = var.master_username
   master_password    = var.master_password
@@ -19,7 +20,7 @@ resource "aws_secretsmanager_secret" "db_secret" {
 }
 
 resource "aws_secretsmanager_secret_version" "db_secret_version" {
-  secret_id = aws_secretsmanager_secret.db_secret.id
+  secret_id     = aws_secretsmanager_secret.db_secret.id
   secret_string = jsonencode({
     "host"     = aws_rds_cluster.postgresql.endpoint,
     "db_name"  = aws_rds_cluster.postgresql.database_name,
