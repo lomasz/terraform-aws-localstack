@@ -8,23 +8,28 @@ Terraform + AWS / LocalStack
 
 ## :memo: Prerequisites
 
-* `python` (Python 3.8 up to 3.11 supported)
-* `pip` (Python package manager)
 * Docker
 * [Helm](https://helm.sh/docs/intro/install/)
 * [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+* [`awscli-local`](https://github.com/localstack/awscli-local)
+* [`terraform-local`](https://github.com/localstack/terraform-local)
 * [pre-commit](https://github.com/pre-commit/pre-commit-hooks) - required only for staging changes to the repository
+
+For :apple: macOS users, you can use the [`Brewfile`](Brewfile) script to simplify the installation of all the
+necessary dependencies.
+
+If you have Homebrew installed, follow these steps:
+
+```bash
+brew bundle
+```
 
 ## :rocket: Getting Started
 
 ### :house: LocalStack
 
 * Install LocalStack AWS CLI (`awslocal`) and `tflocal`
-
-```bash
-pip install awscli-local terraform-local
-```
 
 * Run LocalStack:
 
@@ -72,7 +77,7 @@ tflocal apply -auto-approve
 * Create S3 state bucket
 
 ```bash
-aws s3api create-bucket --bucket my-terraform-state-bucket
+aws s3api create-bucket --bucket tf-state
 ```
 
 * Initialize Terraform:
@@ -95,7 +100,8 @@ terraform apply -auto-approve
 
 ### :wheel_of_dharma: Helm
 
-Use my another git repository [spring-boot-template](https://github.com/lomasz/spring-boot-template) as example of Helm chart.
+Use my another git repository [spring-boot-template](https://github.com/lomasz/spring-boot-template) as example of Helm
+chart.
 
 ## Connecting to EKS on LocalStack using `kubectl`
 
