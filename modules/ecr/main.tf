@@ -10,6 +10,12 @@ resource "aws_ecr_repository" "ecr" {
   lifecycle {
     prevent_destroy = true
   }
+
+  encryption_configuration {
+    encryption_type = "KMS"
+    kms_key         = aws_kms_key.ecr_kms_key.arn
+  }
+
 }
 
 data "aws_iam_policy_document" "eks_image_pull_policy" {
@@ -29,6 +35,12 @@ data "aws_iam_policy_document" "eks_image_pull_policy" {
     ]
     resources = [aws_ecr_repository.ecr[each.key].arn]
   }
+}
+
+resource "aws_kms_key" "ecr_kms_key" {
+  description             = "KMS key for ECR encryption"
+  deletion_window_in_days = 10
+  enable_key_rotation     = true
 }
 
 resource "aws_ecr_repository_policy" "eks_image_pull" {
