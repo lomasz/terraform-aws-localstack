@@ -37,3 +37,15 @@ variable "instance_class" {
   description = "The compute and memory capacity of the RDS instance."
   type        = string
 }
+
+variable "backup_retention_period" {
+  description = "Backup retention period"
+  type        = number
+  default     = 7
+}
+
+variable "storage_encrypted" {
+  description = "Storage encrypted flag"
+  type        = bool
+  default     = true
+}

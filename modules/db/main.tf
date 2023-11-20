@@ -13,8 +13,8 @@ resource "aws_rds_cluster" "postgresql" {
   database_name           = var.db_name
   master_username         = var.master_username
   master_password         = var.master_password
-  backup_retention_period = 7
-  storage_encrypted       = true
+  backup_retention_period = var.backup_retention_period
+  storage_encrypted       = var.storage_encrypted
 }
 
 resource "aws_kms_key" "secret_manager_kms_key" {
