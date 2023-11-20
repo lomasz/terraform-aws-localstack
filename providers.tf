@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "my-terraform-state-bucket"
-    key    = "state/terraform.tfstate"
+    bucket = "tf-state"
+    key    = "terraform.tfstate"
   }
 
   required_version = "= 1.6.4"
