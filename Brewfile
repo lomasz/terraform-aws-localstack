@@ -1,3 +1,5 @@
+tap "hashicorp/tap"
+
 cask "docker"
 
 brew "helm"
